@@ -1,0 +1,58 @@
+@startuml
+title Colors App - Class Diagram
+
+class App
+
+class LoginPage
+class ColorsPage
+class PageTitle
+
+class Login {
+  +doLogin()
+}
+
+class LoggedInName {
+  +doLogout()
+}
+
+class ColorUI {
+  +addColor()
+  +searchColor()
+}
+
+class Server {
+  +login()
+  +addColor()
+  +searchColors()
+}
+
+class User {
+  +id : int
+  +firstName : string
+  +lastName : string
+  +login : string
+  +password : string
+}
+
+class Color {
+  +colorName : string
+  +userId : int
+}
+
+App --> LoginPage
+App --> ColorsPage
+
+LoginPage --> PageTitle
+LoginPage --> Login
+
+ColorsPage --> PageTitle
+ColorsPage --> LoggedInName
+ColorsPage --> ColorUI
+
+Login --> Server : calls
+ColorUI --> Server : calls
+
+Server --> User
+Server --> Color
+
+@enduml
