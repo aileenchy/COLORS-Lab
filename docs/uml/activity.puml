@@ -1,0 +1,46 @@
+@startuml
+title Colors App - Activity Diagram
+
+start
+
+:Open application;
+:Display Login Page;
+:Enter username and password;
+:Click Login;
+
+:Send login request to /api/login;
+
+if (Credentials valid?) then (yes)
+  :Store user data in localStorage;
+  :Redirect to Colors Page;
+else (no)
+  :Display login error message;
+  stop
+endif
+
+while (User remains on Colors Page?) is (yes)
+
+  if (Choose action) then (Search Color)
+    :Enter search text;
+    :Click Search Color;
+    :Send request to /api/searchcolors;
+    :Receive matching colors;
+    :Display results;
+
+  elseif (Add Color)
+    :Enter color name;
+    :Click Add Color;
+    :Send request to /api/addcolor;
+    :Store color;
+    :Display confirmation;
+
+  else (Log Out)
+    :Remove user_data from localStorage;
+    :Redirect to Login Page;
+    stop
+  endif
+
+endwhile
+
+stop
+@enduml
