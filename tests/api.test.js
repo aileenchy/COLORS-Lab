@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 test('login API returns valid response', async () => {
-  const response = await fetch('http://localhost/API/Login.php', {
+  const response = await fetch('http://localhost:80/API/Login.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

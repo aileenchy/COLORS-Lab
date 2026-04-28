@@ -32,5 +32,8 @@ jobs:
       - name: Start PHP Server
         run: php -S localhost:80 -t .
 
+      - name: Wait for server
+        run: sleep 3
+
       - name: Run tests
         run: npm test
