@@ -28,3 +28,12 @@ jobs:
 
       - name: Run HTMLHint (HTML)
         run: npx htmlhint "**/*.html"
+
+      - name: Start PHP Server
+        run: php -S localhost:8000 -t . &
+
+      - name: Wait for server
+        run: sleep 3
+
+      - name: Run tests
+        run: npm test
